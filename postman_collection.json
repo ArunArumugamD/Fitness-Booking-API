@@ -1,0 +1,89 @@
+{
+  "info": {
+    "name": "Fitness Booking API",
+    "description": "Collection for testing Fitness Studio Booking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/health",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "health"]
+        }
+      }
+    },
+    {
+      "name": "Get Upcoming Classes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/classes?skip=0&limit=10",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "classes"],
+          "query": [
+            {
+              "key": "skip",
+              "value": "0"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Book a Class",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"class_id\": 1,\n    \"client_name\": \"John Doe\",\n    \"client_email\": \"john.doe@example.com\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/book",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "book"]
+        }
+      }
+    },
+    {
+      "name": "Get Bookings by Email",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/bookings?email=john.doe@example.com",
+          "host": ["{{base_url}}"],
+          "path": ["api", "v1", "bookings"],
+          "query": [
+            {
+              "key": "email",
+              "value": "john.doe@example.com"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}
